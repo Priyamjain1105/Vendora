@@ -34,3 +34,9 @@
         git commit -m "Your message"
         git push
    ```
+
+### Activating the Virtual Enviroment
+- `vendenv\Scripts\activate`
+
+### Installing Libraries
+- `python install -r requirements.txt`
