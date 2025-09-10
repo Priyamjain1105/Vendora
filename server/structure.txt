@@ -1,0 +1,18 @@
+flask-project-1/ Server
+│
+├── dbapplication
+│   ├── __pycache__
+│   ├── migrations
+│   ├── templates
+│   │   ├── base.html
+│   │   └── index.html
+│   ├── app.py
+│   ├── model.py
+│   ├── routes.py
+│   └── run.py
+│
+└── myenv
+    ├── Include
+    ├── Lib
+    ├── Scripts
+    └── pyvenv.cfg
