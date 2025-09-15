@@ -1,1 +1,3 @@
 server/vendenv
+server/migrations
+server/__pycache__
