@@ -29,12 +29,15 @@
   4. Pull the latest changes `git pull`
   5. Make your code changes
   6. Stage commit and push your changes
-   - ```bash 
-        git add .
-        git commit -m "Your message"
-        git push
-   ```
+```bash 
+    git add .
+    git commit -m "Your message"
+    git push
+```
 
+### Creating virtual Enviroment
+- `python -m venv vendenv`
+  
 ### Activating the Virtual Enviroment
 - `vendenv\Scripts\activate`
 
