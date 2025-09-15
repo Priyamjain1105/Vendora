@@ -2,3 +2,5 @@ flask-sqlalchemy
 flask-migrate
 pymysql
 flask-cors
+flask-pymongo
+
