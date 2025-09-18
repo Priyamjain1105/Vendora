@@ -1,63 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendora</title>
+    <title>{% block title %}My Flask App{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
         main {
-            flex: 1;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
+            flex-grow: 1;
         }
     </style>
+    {% block head %}{% endblock %}
 </head>
-<body>
 
-    <header>
-        <h1 id="appName">Vendora</h1>
+<body class="antialiased text-gray-800">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="{{ url_for('index') }}" class="text-2xl font-bold text-gray-900">
+                Vendora
+            </a>
+            <div class="flex items-center space-x-4 sm:space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out font-medium">
+                    Look for Vendor
+                </a>
+                <a href="#"
+                    class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Sign In
+                </a>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <h2>Welcome to Vendora</h2>
-        <p>This is the main content area of the application.</p>
+    <main class="container mx-auto px-4 py-8 md:py-16">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 Vendora. All rights reserved.</p>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 My Flask App. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        // JavaScript to dynamically change the application name
-        const appNameElement = document.getElementById('appName');
-        appNameElement.textContent = 'Vendora Application'; 
-    </script>
-
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
 </body>
+
 </html>

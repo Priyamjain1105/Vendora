@@ -5,4 +5,4 @@ def register_routes(app,db):
 
     @app.route('/',methods = ['GET','POST'])
     def index():
-        return "<p>Hi keshav</p>"
+        return render_template('index.html')
