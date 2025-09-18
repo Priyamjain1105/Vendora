@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 import sqlite3
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('password.env')
 #database object
 db = SQLAlchemy()
 
