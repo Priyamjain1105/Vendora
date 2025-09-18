@@ -10,7 +10,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__,template_folder = 'templates')
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:arunrockstar@localhost/vendor'
+    
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://avnadmin:{os.getenv("DB_PASSWORD")}@mysql-3b0838a6-priyamjainsocial-b642.i.aivencloud.com:27509/defaultdb'
     #basedir = os.path.abspath(os.path.dirname(__file__))
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database', 'vendor.db') # This will create a file named mylife.db in your project directory
