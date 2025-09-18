@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Portal</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Site Title -->
+            <a href="#" class="text-2xl font-bold text-gray-900">
+                VendorConnect
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-4 sm:space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out font-medium">
+                    Look for Vendor
+                </a>
+                <a href="#" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                    Sign In
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area (for demonstration) -->
+    <main class="container mx-auto p-8 flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-semibold text-gray-700 mb-4">Welcome to VendorConnect</h1>
+            <p class="text-lg text-gray-500">Connecting local vendors with customers.</p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2023 VendorConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
