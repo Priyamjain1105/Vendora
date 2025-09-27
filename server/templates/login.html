@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles & Font */
+        body {
+            font-family: 'Poppins', sans-serif; /* Modern font */
+            background: linear-gradient(135deg, #72EDF2 10%, #515BD4 100%); /* Vibrant gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent blob overflow scroll */
+            color: #333;
+        }
+
+        /* Login Container - Card Style */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            padding: 3rem;
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+            width: 380px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 10; /* Ensure it's above the blobs */
+            overflow: hidden; /* Hide blob parts outside the card */
+            transform: translateY(0); /* For potential future animations */
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Animated Blob Illustration (CSS only) */
+        .login-container::before,
+        .login-container::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #ff6b6b, #ffe66d);
+            border-radius: 50%;
+            opacity: 0.6;
+            filter: blur(50px);
+            z-index: 1;
+            animation: blobDance 10s infinite alternate; /* Blob animation */
+        }
+
+        .login-container::before {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
+            background: linear-gradient(45deg, #a7bfe8, #619af3); /* Different color for one blob */
+        }
+
+        .login-container::after {
+            width: 180px;
+            height: 180px;
+            bottom: -60px;
+            right: -60px;
+            animation-delay: 2s;
+            background: linear-gradient(45deg, #f7d1cd, #f7a0a0); /* Different color for another blob */
+        }
+
+        @keyframes blobDance {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -30px) scale(1.1); }
+            50% { transform: translate(-10px, 20px) scale(0.9); }
+            75% { transform: translate(30px, 10px) scale(1.05); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Header */
+        h2 {
+            margin-bottom: 2rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 2rem;
+            position: relative; /* Above blobs */
+            z-index: 2;
+        }
+
+        /* Input Group & Fields */
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative; /* Above blobs */
+            z-index: 2;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px; /* Slightly rounded inputs */
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #6a82fb; /* Highlight on focus */
+            box-shadow: 0 0 0 3px rgba(106, 130, 251, 0.2); /* Subtle glow */
+        }
+        
+        /* Login Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #6a82fb, #fc5c7d); /* Modern gradient button */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        button:hover {
+            transform: translateY(-2px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Message Area */
+        #message {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success {
+            color: #28a745; /* Bootstrap-like success green */
+            background-color: #d4edda;
+        }
+
+        .error {
+            color: #dc3545; /* Bootstrap-like error red */
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>Welcome Back!</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Log In</button>
+            <p id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const message = document.getElementById('message');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Still 'admin' and 'password123' for demo purposes
+            if (username === 'admin' && password === 'password123') {
+                message.textContent = 'Login successful! Redirecting...';
+                message.className = 'success';
+                // In a real app, you'd redirect: window.location.href = '/dashboard';
+            } else {
+                message.textContent = 'Invalid username or password. Please try again.';
+                message.className = 'error';
+            }
+        });
+    </script>
+
+</body>
+</html>
